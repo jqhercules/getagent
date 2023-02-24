@@ -1,0 +1,95 @@
+@tailwind components;
+
+// @layer components {
+//   .container {
+//     @apply w-40;
+//   }
+// }
+// .search {
+//   height: 100vh;
+//   margin-inline: 1.5rem;
+//   display: grid;
+//   place-items: center;
+// }
+
+.search {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  background-color: var(--white-color);
+  box-shadow: 0 4px 24px hsla(222, 68%, 12%, 0.1);
+  border-radius: 4rem;
+  padding: 10px;
+  overflow: hidden;
+  transition: width 0.5s cubic-bezier(0.9, 0, 0.3, 0.9);
+  margin: auto;
+
+  &.searchActive {
+    width: 100%;
+
+    .input {
+      opacity: 1;
+      pointer-events: initial;
+    }
+
+    .button {
+      transform: rotate(90deg);
+    }
+
+    .icon {
+      opacity: 0;
+    }
+
+    .close {
+      opacity: 1;
+    }
+  }
+
+  .input {
+    background-color: rgb(244, 244, 244);
+    border: none;
+    outline: none;
+    width: calc(100% - 64px);
+    height: 100%;
+    border-radius: 4rem;
+    padding: 0 14px;
+    font-family: var(--body-font);
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s;
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 100px var(--white-color) inset;
+    }
+  }
+
+  .button {
+    width: 56px;
+    height: 56px;
+    background-color: var(--dark-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.9, 0, 0.3, 0.9);
+  }
+
+  .icon,
+  .close {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    position: absolute;
+    transition: opacity 0.5s cubic-bezier(0.9, 0, 0.3, 0.9);
+  }
+
+  .close {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,107 @@
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  &:global(.active) {
+    pointer-events: initial;
+
+    .container {
+      transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.43, 1.19);
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+.container {
+  position: relative;
+  background-color: var(--white-color);
+  padding: 30px;
+  border-radius: 5px;
+  width: calc(100% - 60px);
+  overflow: scroll;
+  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-100%) scale(0.5);
+  transition: opacity 0.3s ease-in-out, transform 1s ease-in-out;
+  font-size: 1rem;
+
+  :global(.cross) {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--dark-color);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    i {
+      color: var(--white-color);
+      pointer-events: none;
+    }
+  }
+
+  :global(.content) {
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin: 1rem 0;
+
+      li {
+        background-color: var(--white-color);
+        box-shadow: 0 4px 24px hsla(222, 68%, 12%, 0.1);
+        padding: 14px;
+        border-radius: 4px;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+
+        p {
+          line-height: 1;
+
+          span {
+            font-weight: 700;
+          }
+
+          &:not(:last-child):after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            margin: 10px 0;
+            background-color: hsla(222, 68%, 12%, 0.1);
+          }
+        }
+      }
+    }
+
+    :global(.street) {
+      display: flex;
+      font-size: 0.8rem;
+
+      span {
+        display: flex;
+        margin-left: auto;
+        text-transform: uppercase;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+}

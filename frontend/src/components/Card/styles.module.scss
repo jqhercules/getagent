@@ -1,0 +1,57 @@
+.card {
+  background-color: var(--white-color);
+  box-shadow: 0 4px 24px hsla(222, 68%, 12%, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  animation-name: fadeIn;
+  animation-delay: attr(data-content);
+  animation-duration: 1s;
+  animation-fill-mode: both;
+
+  @for $i from 1 to 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.placeholder {
+  min-height: 250px;
+  background-color: var(--dark-color);
+  display: grid;
+  place-items: center;
+  border-radius: 4px 4px 0 0;
+}
+
+.icon {
+  font-size: 4rem;
+  color: var(--white-color);
+}
+
+.content {
+  padding: 15px;
+}
+
+.location {
+  display: flex;
+  font-size: 1rem;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.postcode {
+  display: flex;
+  margin-left: auto;
+  text-transform: uppercase;
+}
